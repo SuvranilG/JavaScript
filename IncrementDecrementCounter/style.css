@@ -1,0 +1,43 @@
+
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    align-self: center;
+    /* margin:100px; */
+    width: 100vw;
+    height: 100vh;
+    border: 1px solid black;
+}
+
+.number{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+.input{
+    text-align: center;
+}
+
+
+.buttons{
+    border-radius: 50%;
+    height: 3em;
+    width:3em;
+    /* padding: 0.25em 0.8em; */
+}
+
+#display{
+    width: 10em;
+    height: 10em;
+    border-radius: 50%;
+    background-color: black;
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
