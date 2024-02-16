@@ -12,11 +12,11 @@ let isPaused = false;
 let hours=0, minutes=0, seconds=0, milliseconds=0;
 
 
-const updateDisplayTimer=(hours, minutes, seconds, milliseconds)=>{
+const updateDisplayTimer=(hours, minutes, seconds)=>{
     docHours.innerHTML = `${hours} hrs`;
     docMinutes.innerHTML = `${minutes} mins`;
     docSeconds.innerHTML = `${seconds} secs`;
-    docMilliseconds.innerHTML = `: ${milliseconds} ms`;
+    // docMilliseconds.innerHTML = `: ${milliseconds} ms`;
 }
 
 // displayTimer.innerHTML=`${hours}hrs:${minutes}mins:${seconds}secs`;
@@ -27,14 +27,14 @@ const start = () => {
     timerId = setInterval(() => {
         if (!isPaused ) {
           time++;
-          hours = Math.floor(time / 3600000);
-          minutes = Math.floor((time - (hours * 3600000)) / 60000);
-          seconds = Math.floor((time - (hours * 3600000) - (minutes * 60000))/1000);
-          milliseconds = Math.floor((time - (hours * 3600000) - (minutes * 60000)- (seconds*1000)));
-        //Math.floor((time - Math.floor(time)) * 1000); wrong logic
-        //console.log(`${hours}:${minutes}:${seconds}:${milliseconds}`);
-        //displayTimer.innerHTML=`${hours}hrs:${minutes}mins:${seconds}secs`;
-        updateDisplayTimer(hours, minutes, seconds, milliseconds);
+          hours = Math.floor(time / 3600);
+          minutes = Math.floor((time - (hours * 3600)) / 60);
+          seconds = Math.floor((time - (hours * 3600) - (minutes * 60)));
+        //   milliseconds = Math.floor((time - (hours * 3600) - (minutes * 60)- (seconds*1000)));
+        // Math.floor((time - Math.floor(time)) * 1000); wrong logic
+        console.log(`${hours}:${minutes}:${seconds}`);
+        // displayTimer.innerHTML=`${hours}hrs:${minutes}mins:${seconds}secs`;
+        updateDisplayTimer(hours, minutes, seconds);
 
         //   time++;
         //   hours = Math.floor(time / 3600);
@@ -43,10 +43,12 @@ const start = () => {
         //   milliseconds = Math.floor((time - Math.floor(time)) * 1000);
         //   console.log(`${hours}:${minutes}:${seconds}:${milliseconds}`);
         //   displayTimer.innerHTML=`${hours}hrs:${minutes}mins:${seconds}secs`;
+        // updateDisplayTimer(hours, minutes, seconds, milliseconds);
+
         }
       isRunning= true;
 
-      }, 1);
+      }, 1000);
 
       
 }
@@ -59,13 +61,16 @@ const stop = () => {
 }
 
 const reset = () => {
+    // clearInterval(timerId);
+
     time = 0;
     hours = 0;
     minutes = 0;
     seconds = 0;
-    milliseconds = 0;
+    // milliseconds = 0;
     // displayTimer.innerHTML=`${hours}hrs:${minutes}mins:${seconds}secs`;
-    updateDisplayTimer(hours, minutes, seconds, milliseconds);
+    console.log(`${hours}hrs:${minutes}mins:${seconds}secs`);
+    updateDisplayTimer(hours, minutes, seconds);
 
 
 }

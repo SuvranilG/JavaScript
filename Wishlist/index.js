@@ -3,6 +3,7 @@ let todoInput = document.querySelector(".input");
 let addTodoButton = document.querySelector(".button");
 let showTodos = document.querySelector(".todos-container");
 let todo;
+let sodo;
 
 
 let localData = JSON.parse(localStorage.getItem("todo"));
@@ -20,19 +21,25 @@ function uuid() {
 addTodoButton.addEventListener("click", (e) => {
     e.preventDefault();
     todo = todoInput.value;
+
     if (todo.length > 0){
         todoList.push({id: uuid(), todo, isCompleted: false}) //Creating an array of objects
     }
     renderTodoList(todoList);
     localStorage.setItem("todo", JSON.stringify(todoList));
     todoInput.value = "";
-    // console.log(e);
+    console.log(e);
     
 })
 
+// todoInput.addEventListener("keyup", (event) =>{
+//     const inputValue = event.target.value;
+//     console.log(inputValue);
+// })
+
 showTodos.addEventListener("click", (e) => {
     let key = e.target.dataset.key;
-    let delTodokey = e.target.dataset.todokey;
+    let delTodokey = e.target.dataset.todokey;//Mark this important
     console.log(key);
     console.log(delTodokey);
     console.log(e);
@@ -49,7 +56,7 @@ function renderTodoList(todoList){
         <input class="t-checkbox t-pointer" id="item-${id}" type="checkbox" data-key=${id} ${isCompleted ? "checked": ""} >
         <label for="item-${id}" class="todo todo-text t-pointer ${isCompleted ? "checked-todo" : ""}" data-key=${id}>${todo}</label>
         <button class="absolute right-0 button cursor"> 
-            <span data-todokey=${id} class="del-btn material-icons-outlined">delete</span>
+        <span data-todokey=${id} class="del-btn material-icons-outlined">delete</span>
         </button>
     </div>`)
 }

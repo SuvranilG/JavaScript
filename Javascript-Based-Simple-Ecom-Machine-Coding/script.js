@@ -66,6 +66,17 @@ function renderCategories(productData){
   
 }
 
+function getCategories(productData){
+    const categories = new Set();
+  
+      productData.forEach((product)=>{
+          categories.add(product.category);
+      })
+      // console.log(categories);
+      // console.log(Array.from(categories));
+      return Array.from(categories);
+  
+  }
 
 function onCategoryChange(e){
         const selectedCategory = e.target.value;
@@ -83,19 +94,6 @@ function onCategoryChange(e){
         renderProducts(filteredProducts);
 
  };
-
-
-function getCategories(productData){
-  const categories = new Set();
-
-    productData.forEach((product)=>{
-        categories.add(product.category);
-    })
-    // console.log(categories);
-    // console.log(Array.from(categories));
-    return Array.from(categories);
-
-}
 
 function renderProducts(productsData){
 
