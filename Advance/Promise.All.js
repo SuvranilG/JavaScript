@@ -3,7 +3,7 @@ let Promise2 = new Promise((resolve)=>setTimeout(()=>resolve("Promise 2 resovled
 let Promise3 = new Promise((resolve)=>setTimeout(()=>resolve("Promise 3 resovled"),3000)); 
 
 
-// Promise1.then((res)=>console.log(res));
+Promise1.then((res)=>console.log(res));
 // Promise2.then((res)=>console.log(res));
 // Promise3.then((res)=>console.log(res));
 
